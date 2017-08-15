@@ -1,0 +1,21 @@
+---
+- name: Create app dir
+  file: path={{ dest }} state=directory recurse=yes
+
+- name: Get tarball from s3
+  s3: bucket={{ bucket }} object={{ object }} dest={{ dest }}/{{ object }} mode=get 
+
+- name: Extract app
+  command: chdir={{ dest }} tar xvf {{ object }}
+
+- name: Get runserver script
+  s3: bucket={{ bucket }} object=runserver.sh dest={{ dest }}/runserver.sh mode=get
+
+- name: Install dependencies
+  command: chdir={{ dest }}/django pip install -r requirements.txt
+
+- name: Run migration and server script
+  command: bash {{ dest}}/runserver.sh
+
+- name: Run server at startup
+  raw: echo 'python /opt/notejam/django/notejam/manage.py runserver 0.0.0.0:80 >/dev/null 2>&1 &' >> /etc/rc.local

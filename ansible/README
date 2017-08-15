@@ -1,0 +1,3 @@
+Since we are using ec2 dynamic inventory we have to specify ansible to use it either by cli flag -i or env variables 
+ANSIBLE_HOSTS="$PATH_TO_ec2.py"
+EC2_INI_PATH="$PATH_TO_ec2.ini"

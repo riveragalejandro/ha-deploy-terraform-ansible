@@ -1,0 +1,6 @@
+---
+- name: Deploy notejam webapp
+  hosts: tag_Role_webapp_prod
+
+  roles:
+    - { role: webapp, become: yes }

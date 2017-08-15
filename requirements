@@ -1,0 +1,5 @@
+Terraform v0.9.11 or later
+ansible 2.2.0.0 (this exact version)
+boto 2.46.1 (this exact version)
+
+ansible and boto versions are strict for ansible dynamic aws inventory to work

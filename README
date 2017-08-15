@@ -1,0 +1,1 @@
+Deployment of multiple environments with terraform and ansible on AWS, deploying a django app as an example and using multiple AZ's for high availability.
